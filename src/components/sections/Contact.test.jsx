@@ -25,11 +25,16 @@ test("sends to the event mailbox and retains the draft for retry", async () => {
   }
   fireEvent.click(screen.getByRole("button"));
   await screen.findByText(/Email delivery is temporarily unavailable/);
-  expect(
-    screen
-      .getByRole("link", { name: "hack_kshetra@vvce.ac.in" })
-      .getAttribute("href"),
-  ).toBe("mailto:hack_kshetra@vvce.ac.in");
+  const fallbackEmail = screen.getByRole("link", {
+    name: "Open a prefilled email draft",
+  });
+  const fallbackUrl = new URL(fallbackEmail.href);
+  expect(fallbackUrl.protocol).toBe("mailto:");
+  expect(fallbackUrl.pathname).toBe("hack_kshetra@vvce.ac.in");
+  expect(fallbackUrl.searchParams.get("subject")).toBe("Teams");
+  expect(fallbackUrl.searchParams.get("body")).toBe(
+    "Name: Asha\nEmail: asha@example.org\n\nCan we enter?",
+  );
   expect(screen.getByLabelText("Message").value).toBe("Can we enter?");
   fireEvent.click(screen.getByRole("button"));
   await waitFor(() =>

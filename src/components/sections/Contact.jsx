@@ -71,6 +71,7 @@ const Form = styled.form`
 `;
 export default function Contact() {
   const [status, setStatus] = useState("idle");
+  const [fallbackEmail, setFallbackEmail] = useState("");
   const sending = useRef(false);
   async function submit(e) {
     e.preventDefault();
@@ -79,6 +80,7 @@ export default function Contact() {
     const { from_email, from_name, subject, message, draft } = form.elements;
     message.value = `From: ${from_name.value} <${from_email.value}>\nSubject: ${subject.value}\n\n${draft.value}`;
     sending.current = true;
+    setFallbackEmail("");
     setStatus("sending");
     try {
       await emailjs.sendForm(
@@ -90,6 +92,12 @@ export default function Contact() {
       form.reset();
       setStatus("sent");
     } catch {
+      const emailBody = `Name: ${from_name.value}\nEmail: ${from_email.value}\n\n${draft.value}`;
+      setFallbackEmail(
+        `mailto:hack_kshetra@vvce.ac.in?subject=${encodeURIComponent(
+          subject.value,
+        )}&body=${encodeURIComponent(emailBody)}`,
+      );
       setStatus("failed");
     } finally {
       sending.current = false;
@@ -107,7 +115,10 @@ export default function Contact() {
       <Form
         onSubmit={submit}
         onChange={() => {
-          if (status !== "sending") setStatus("idle");
+          if (status !== "sending") {
+            setFallbackEmail("");
+            setStatus("idle");
+          }
         }}
       >
         <label>
@@ -157,12 +168,9 @@ export default function Contact() {
             : status === "failed"
               ? (
                 <>
-                  Email delivery is temporarily unavailable. Please email us
-                  directly at{" "}
-                  <a href="mailto:hack_kshetra@vvce.ac.in">
-                    hack_kshetra@vvce.ac.in
-                  </a>
-                  .
+                  Email delivery is temporarily unavailable.{" "}
+                  <a href={fallbackEmail}>Open a prefilled email draft</a> to
+                  send your message directly.
                 </>
               )
               : ""}
