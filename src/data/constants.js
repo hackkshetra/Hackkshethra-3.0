@@ -12,7 +12,7 @@ export const event = {
   organizedBy:
     "Department of Computer Science and Engineering, Vidyavardhaka College of Engineering",
   association:
-    "In association with Bharat Cares (by SMIC Trust) and in collaboration with IBM",
+    "In association with Bharat Cares (by SMEC Trust) and in collaboration with IBM",
   prizePool: "₹70,000+",
   teamSize: "3–4 members",
   participationMode: "Offline",
