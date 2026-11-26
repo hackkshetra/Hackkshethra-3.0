@@ -168,9 +168,16 @@ export default function Registration() {
         <li>
           <h2>Submit your PDF</h2>
           <p>
-            The official submission portal is pending. Return here for the
-            submission link when it opens.
+            Upload your completed presentation as a PDF using the official
+            submission form.
           </p>
+          <PrimaryLink
+            href={event.ideaSubmissionUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Submit your PDF
+          </PrimaryLink>
         </li>
       </Steps>
     </Section>

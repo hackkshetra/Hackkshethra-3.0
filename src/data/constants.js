@@ -19,6 +19,7 @@ export const event = {
   startDateTime: "2026-12-11T10:30:00+05:30",
   endDateTime: "2026-12-12T10:30:00+05:30",
   registrationUrl: "",
+  ideaSubmissionUrl: "https://forms.gle/wYkMfAuDQH4y7p8NA",
   ideaTemplate: `${process.env.PUBLIC_URL}/idea_template.pptx`,
   logo: eventLogo,
 };
@@ -177,22 +178,22 @@ export const projects = [
   },
   {
     id: "faculty-shashank",
-    title: "Shashank Sir",
+    title: "Prof. Shashank",
     category: "faculty",
   },
   {
     id: "faculty-harsha",
-    title: "Harsha Sir",
+    title: "Prof. Harsha",
     category: "faculty",
   },
   {
     id: "faculty-aishwarya",
-    title: "Aishwarya Ma'am",
+    title: "Prof. Aishwarya",
     category: "faculty",
   },
   {
     id: "faculty-harshitha-suresh",
-    title: "Harshitha Suresh Ma'am",
+    title: "Prof. Harshitha Suresh",
     category: "faculty",
   },
   {

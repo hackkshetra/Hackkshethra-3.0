@@ -229,64 +229,6 @@ const Artwork = styled.figure`
     transform: rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
     transition: transform 0.32s ease-out;
   }
-  .shield-control {
-    position: absolute;
-    right: 0;
-    bottom: 3%;
-    z-index: 3;
-    min-height: 36px;
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 7px 11px;
-    color: #d7fbff;
-    border: 1px solid rgba(126, 234, 255, 0.42);
-    border-radius: 4px;
-    background: rgba(5, 17, 34, 0.8);
-    font: inherit;
-    font-size: 11px;
-    font-family: "IBM Plex Mono", monospace;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    cursor: pointer;
-    backdrop-filter: blur(12px);
-    transition: background 0.2s ease, box-shadow 0.2s ease;
-    &:hover,
-    &[aria-expanded="true"] {
-      background: rgba(13, 69, 92, 0.92);
-      box-shadow: 0 0 24px rgba(62, 220, 255, 0.24);
-    }
-    &::before {
-      content: "";
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #64f2c2;
-      box-shadow: 0 0 10px rgba(100, 242, 194, 0.8);
-    }
-  }
-  .shield-readout {
-    position: absolute;
-    right: 0;
-    bottom: calc(3% + 44px);
-    z-index: 4;
-    width: min(250px, 82%);
-    padding: 14px 16px;
-    color: #e8faff;
-    border: 1px solid rgba(126, 234, 255, 0.3);
-    background: rgba(4, 13, 28, 0.9);
-    box-shadow: 0 16px 42px rgba(0, 0, 0, 0.32);
-    backdrop-filter: blur(16px);
-    font-size: 12px;
-    line-height: 1.55;
-    strong {
-      display: block;
-      margin-bottom: 4px;
-      color: #76efff;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-  }
   @keyframes emblem-float {
     50% {
       transform: translateY(-4px);
@@ -313,15 +255,6 @@ const Artwork = styled.figure`
       inset: 4% 3% 10%;
       width: 94%;
       height: 86%;
-    }
-    .shield-control {
-      right: 2%;
-      bottom: 0;
-      font-size: 9px;
-    }
-    .shield-readout {
-      right: 2%;
-      bottom: 44px;
     }
   }
 `;
@@ -605,8 +538,6 @@ const type = (instance) =>
     .start();
 export default function Hero() {
   const reduce = useReducedMotion();
-  const [shieldActive, setShieldActive] = useState(false);
-  const [shieldHovered, setShieldHovered] = useState(false);
   function tilt(e) {
     if (
       reduce ||
@@ -658,7 +589,7 @@ export default function Hero() {
               </Pattern>
             )}
             <div className="shield-canvas" aria-hidden="true">
-              <DefenseShield active={shieldActive} hovered={shieldHovered} />
+              <DefenseShield />
             </div>
             <div className="petal-orbit" aria-hidden="true">
               {Array.from({ length: 8 }, (_, index) => (
@@ -669,29 +600,6 @@ export default function Hero() {
               ))}
             </div>
             <div className="logo">{logo}</div>
-            <button
-              className="shield-control"
-              type="button"
-              aria-expanded={shieldActive}
-              aria-controls="shield-readout"
-              onClick={() => setShieldActive((active) => !active)}
-              onPointerEnter={() => setShieldHovered(true)}
-              onPointerLeave={() => setShieldHovered(false)}
-              onFocus={() => setShieldHovered(true)}
-              onBlur={() => setShieldHovered(false)}
-            >
-              {shieldActive ? "Stop shield simulation" : "Run shield simulation"}
-            </button>
-            <div
-              className="shield-readout"
-              id="shield-readout"
-              role="status"
-              hidden={!shieldActive}
-            >
-              <strong>Defense simulation</strong>
-              A simulated signal reaches the perimeter as the holographic
-              shield expands.
-            </div>
           </Artwork>
         </Face>
         <Stub>
