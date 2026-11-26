@@ -1,14 +1,19 @@
 import styled, { ThemeProvider } from "styled-components";
 import { darkTheme } from "./utils/Themes";
 import Navbar from "./components/Navbar";
-import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import {
+  BrowserRouter,
+  Navigate,
+  Route,
+  Routes,
+  useLocation,
+} from "react-router-dom";
 import Home from "./components/sections/Home";
 import Skills from "./components/sections/Skills";
 import Experience from "./components/sections/Experience";
 import Education from "./components/sections/Education";
 import NetworkEnvironment from "./components/canvas/NetworkEnvironment";
 import Projects from "./components/sections/Projects";
-import Contact from "./components/sections/Contact";
 import Footer from "./components/sections/Footer";
 import About from "./components/sections/About";
 import Sponsors from "./components/sections/Sponsors";
@@ -158,14 +163,7 @@ const SiteRoutes = () => {
                 </Wrapper>
               }
             />
-            <Route
-              path="/contact"
-              element={
-                <Wrapper>
-                  <Contact />
-                </Wrapper>
-              }
-            />
+            <Route path="/contact" element={<Navigate to="/team" replace />} />
             <Route
               path="/register"
               element={

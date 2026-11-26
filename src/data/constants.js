@@ -11,7 +11,7 @@ export const event = {
   venue: "VVCE Sports Complex, Mysuru, Karnataka",
   organizedBy:
     "Department of Computer Science and Engineering, Vidyavardhaka College of Engineering",
-  association: "In association with IBM CSRBOX",
+  association: "In association with Bharat Cares",
   prizePool: "₹66,000 total cash prizes",
   teamSize: "3–4 members",
   participationMode: "Offline",
@@ -281,8 +281,8 @@ export const projects = [
     category: "Perks",
   },
   {
-    id: "association-ibm-csrbox",
-    title: "IBM CSRBOX",
+    id: "association-bharat-cares",
+    title: "Bharat Cares",
     description: event.association,
     category: "association",
   },
@@ -291,7 +291,7 @@ export const projects = [
 export const collaborators = [
   {
     id: "bharat-cares",
-    name: "BharatCares",
+    name: "Bharat Cares",
     role: "Collaborator",
     logo: "https://bharatcares.org/assets/img/logo/logo-png.png",
     website: "https://bharatcares.org/",

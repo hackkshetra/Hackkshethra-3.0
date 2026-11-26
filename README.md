@@ -67,11 +67,10 @@ The included GitHub Actions workflow builds and deploys the site whenever code i
 
 The workflow configures the correct asset and route base for both project sites (`https://<owner>.github.io/<repository>/`) and user sites (`https://<owner>.github.io/`). Direct links to app pages are supported.
 
-## Contact form email delivery
+## Queries
 
-The contact form includes `hack_kshetra@vvce.ac.in` as its `to_email` value. In the EmailJS dashboard, set the contact template's **To Email** field to `{{to_email}}` so submissions are delivered to that mailbox.
-
-If submissions fail with `Gmail_API: Invalid grant`, reconnect the Gmail account used by the EmailJS service in the EmailJS dashboard. The contact form provides a direct email link if delivery is unavailable.
+For event queries, email [hack_kshetra@vvce.ac.in](mailto:hack_kshetra@vvce.ac.in)
+or contact the student coordinators on the [Organizing Team page](https://hackkshetra.github.io/Hackkshethra-3.0/team).
 
 ## Useful notes
 

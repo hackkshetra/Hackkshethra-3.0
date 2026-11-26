@@ -2,7 +2,7 @@
 
 ## Purpose
 
-HACKKSHETRA 3.0 is a frontend-only, multi-page event website for the 11–12 December 2026 national-level hackathon. It presents the event overview, AI domains, schedule, organizers, associations, prizes, registration guidance, sponsorship opportunities, historical gallery, and a contact form.
+HACKKSHETRA 3.0 is a frontend-only, multi-page event website for the 11–12 December 2026 national-level hackathon. It presents the event overview, AI domains, schedule, organizers, associations, prizes, registration guidance, sponsorship opportunities, and historical gallery.
 
 ## Tech Stack
 
@@ -10,7 +10,6 @@ HACKKSHETRA 3.0 is a frontend-only, multi-page event website for the 11–12 Dec
 - `styled-components` with a shared dark theme
 - React Three Fiber/Drei for the star field and Earth model
 - Framer Motion, React Tilt, and Vertical Timeline for presentation
-- EmailJS for client-side contact-form delivery
 - No backend, database, server API, or global state library
 
 ## Build and Run
@@ -25,10 +24,10 @@ HACKKSHETRA 3.0 is a frontend-only, multi-page event website for the 11–12 Dec
 
 - `src/index.js` mounts `<App />` in React Strict Mode.
 - `src/App.js` applies the theme and defines the React Router route table.
-- Navigation uses browser routes for Home, About, Domains, Schedule, Prizes, Sponsors, Glimpses, Team, Contact, and Registration.
+- Navigation uses browser routes for Home, About, Domains, Schedule, Prizes, Sponsors, Glimpses, Team, and Registration.
 - `src/data/constants.js` is the main content source for event metadata, domains, timeline, prizes, organizers, associations, sponsorship tiers, submission guidance, and perks.
 - Section-level UI state stays local: mobile menu, track modal, contributor filter, and gallery lightbox.
-- The contact form sends directly from the browser through EmailJS.
+- Query contact details are available in the global footer; student coordinator phone numbers are listed on the Team page.
 
 ## Project Structure
 
@@ -51,7 +50,7 @@ HACKKSHETRA 3.0 is a frontend-only, multi-page event website for the 11–12 Dec
 - Use the theme tokens instead of introducing isolated colors where practical.
 - Match existing responsive breakpoints (primarily 960 px, 768 px, and 500/640 px).
 - Give mapped elements stable, unique keys and interactive controls keyboard-accessible semantics.
-- Do not add credentials or private secrets to source. Treat EmailJS identifiers as runtime configuration when changing the integration.
+- Do not add credentials or private secrets to source.
 
 ## Change Guide
 
@@ -60,12 +59,12 @@ HACKKSHETRA 3.0 is a frontend-only, multi-page event website for the 11–12 Dec
 - Edition, dates, venue, prize pool, logo, and registration state: `src/data/constants.js`
 - Navigation labels/anchors: `src/components/Navbar.jsx`
 - Colors: `src/utils/Themes.js`
-- Contact behavior: `src/components/sections/Contact.jsx`
+- Query contact details: `src/components/sections/Footer.jsx`
 - 3D visuals: `src/components/canvas/`
 
 ## Verification
 
 - Run a production build after every change.
-- Manually check desktop and mobile navigation, track modal, contributor tabs, glimpse toggle, external links, GLTF loading, and form success/failure states.
-- No automated tests are currently present; add `*.test.js` or `*.test.jsx` files near the relevant source when adding behavior.
+- Manually check desktop and mobile navigation, track modal, contributor tabs, glimpse toggle, external links, and GLTF loading.
+- Add `*.test.js` or `*.test.jsx` files near the relevant source when adding behavior.
 - Avoid importing the historical photo/video archive into the bundle unless a feature explicitly needs it; many files are several megabytes each.

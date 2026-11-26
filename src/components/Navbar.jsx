@@ -13,7 +13,6 @@ const links = [
   ["Sponsors", "/sponsors"],
   ["Glimpses", "/glimpses"],
   ["Team", "/team"],
-  ["Contact", "/contact"],
   ["Register", "/register"],
 ];
 const Nav = styled.nav`

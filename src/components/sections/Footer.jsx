@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Instagram, LinkedIn } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 import { Bio, event } from "../../data/constants";
 
 const Foot = styled.footer`
@@ -19,6 +20,19 @@ const Foot = styled.footer`
   }
   small {
     color: ${({ theme }) => theme.text_secondary};
+  }
+  .queries {
+    flex-basis: 100%;
+    margin: 0;
+    color: ${({ theme }) => theme.text_secondary};
+    line-height: 1.6;
+  }
+  .queries a {
+    display: inline;
+    width: auto;
+    height: auto;
+    color: ${({ theme }) => theme.accent};
+    text-underline-offset: 3px;
   }
   nav {
     margin-left: auto;
@@ -62,6 +76,13 @@ export default function Footer() {
             <Instagram />
           </a>
         </nav>
+        <p className="queries">
+          For any queries, email{" "}
+          <a href="mailto:hack_kshetra@vvce.ac.in">
+            hack_kshetra@vvce.ac.in
+          </a>{" "}
+          or contact our <Link to="/team">student coordinators</Link>.
+        </p>
       </div>
     </Foot>
   );
