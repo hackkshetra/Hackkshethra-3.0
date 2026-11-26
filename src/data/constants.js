@@ -11,8 +11,9 @@ export const event = {
   venue: "VVCE Sports Complex, Mysuru, Karnataka",
   organizedBy:
     "Department of Computer Science and Engineering, Vidyavardhaka College of Engineering",
-  association: "In association with Bharat Cares",
-  prizePool: "₹66,000 total cash prizes",
+  association:
+    "In association with Bharat Cares (by SMIC Trust) and in collaboration with IBM",
+  prizePool: "₹70,000+",
   teamSize: "3–4 members",
   participationMode: "Offline",
   duration: "24 hours",
@@ -32,7 +33,7 @@ export const Bio = {
     "Forge. Fight. Flourish.",
   ],
   description:
-    `${event.name} brings innovators together for a ${event.duration} offline hackathon at ${event.venue}. Registrations are free for everyone. Teams of ${event.teamSize} will identify their own problem statements within one of three AI domains and build practical solutions. ${event.prizePool} across all domains, with exciting goodies and rewards. ${event.association}`,
+    `${event.name} brings innovators together for a ${event.duration} offline hackathon at ${event.venue}. Registrations are free for everyone. Teams of ${event.teamSize} will identify their own problem statements within one of three AI domains and build practical solutions. Prize pool: ${event.prizePool} across all domains, with exciting goodies and rewards. ${event.association}`,
   github: event.ideaTemplate,
   resume: event.registrationUrl,
   linkedin: "https://www.linkedin.com/in/hack-kshetra-775a73330/",

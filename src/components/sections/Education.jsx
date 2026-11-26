@@ -38,6 +38,8 @@ const PrizeIntro = styled.div`
     line-height: 1.65;
   }
   .pool {
+    position: relative;
+    isolation: isolate;
     display: flex;
     align-items: center;
     gap: clamp(10px, 2vw, 20px);
@@ -49,8 +51,53 @@ const PrizeIntro = styled.div`
     white-space: nowrap;
     text-shadow: 0 0 34px rgba(85, 217, 244, 0.18);
   }
+  .confetti {
+    position: absolute;
+    inset: -10px -8px;
+    pointer-events: none;
+  }
+  .confetti i {
+    position: absolute;
+    width: 6px;
+    height: 12px;
+    border-radius: 2px;
+    background: #ffd76b;
+    box-shadow: 0 0 10px rgba(255, 194, 66, 0.38);
+    animation: confetti-dance 2.8s ease-in-out infinite;
+  }
+  .confetti i:nth-child(1) {
+    left: 5%;
+    top: 14%;
+  }
+  .confetti i:nth-child(2) {
+    left: 42%;
+    bottom: 8%;
+    background: #55d9f4;
+    animation-delay: -0.8s;
+  }
+  .confetti i:nth-child(3) {
+    right: 24%;
+    top: 5%;
+    background: #ff83b7;
+    animation-delay: -1.4s;
+  }
+  .confetti i:nth-child(4) {
+    right: 3%;
+    bottom: 12%;
+    background: #a792ff;
+    animation-delay: -2s;
+  }
+  @keyframes confetti-dance {
+    0%, 100% { opacity: 0.55; transform: translateY(0) rotate(-8deg); }
+    50% { opacity: 1; transform: translateY(-7px) rotate(12deg); }
+  }
+  .trophy,
+  .prize-value {
+    position: relative;
+    z-index: 1;
+  }
   .trophy {
-    width: clamp(38px, 5vw, 58px);
+    width: clamp(46px, 6vw, 68px);
     height: auto;
     flex: 0 0 auto;
     color: #ffd76b;
@@ -69,6 +116,7 @@ const PrizeIntro = styled.div`
   }
   @media (prefers-reduced-motion: reduce) {
     .trophy { animation: none; }
+    .confetti i { animation: none; }
   }
 `;
 
@@ -304,11 +352,6 @@ function Trophy() {
 }
 
 export default function Education() {
-  const total = prizeAwards.reduce(
-    (sum, award) => sum + Number(award.amount.replace(/[^\d]/g, "")),
-    0,
-  ) * skills.length;
-
   return (
     <Section>
       <PageTitle>Prizes & rewards</PageTitle>
@@ -325,9 +368,18 @@ export default function Education() {
             Exciting goodies and rewards await participating teams too.
           </p>
         </div>
-        <strong className="pool" aria-label={`${event.prizePool} total`}>
+        <strong
+          className="pool"
+          aria-label={`Total prize pool ${event.prizePool}`}
+        >
+          <span className="confetti" aria-hidden="true">
+            <i />
+            <i />
+            <i />
+            <i />
+          </span>
           <Trophy />
-          <span>₹{total.toLocaleString("en-IN")}</span>
+          <span className="prize-value">{event.prizePool}</span>
         </strong>
       </PrizeIntro>
       <AwardSection aria-labelledby="award-heading">
