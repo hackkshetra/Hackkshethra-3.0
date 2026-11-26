@@ -4,7 +4,7 @@ This project is a React-based website for HackKshetra, featuring a modern landin
 
 ## Live website
 
-https://usha-125.github.io/Hackshethra-3.0/
+https://hackkshetra.github.io/Hackkshethra-3.0/
 
 ## Download the project
 
